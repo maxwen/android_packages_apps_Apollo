@@ -36,6 +36,7 @@ import com.devspark.appmsg.AppMsg;
  */
 public final class NavUtils {
 
+    private static final int EFFECTS_PANEL = 1;
     /**
      * Opens the profile of an artist.
      * 
@@ -91,7 +92,7 @@ public final class NavUtils {
         try {
             final Intent effects = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
             effects.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, MusicUtils.getAudioSessionId());
-            context.startActivity(effects);
+            context.startActivityForResult(effects, EFFECTS_PANEL);
         } catch (final ActivityNotFoundException notFound) {
             AppMsg.makeText(context, context.getString(R.string.no_effects_for_you),
                     AppMsg.STYLE_ALERT);
